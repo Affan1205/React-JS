@@ -1,0 +1,9 @@
+.movie-container {
+  width: 90%;
+  margin: 40px auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}
