@@ -7,7 +7,7 @@ function App() {
     firstName: "",
     lastName: "",
     email: "",
-    country: "",
+    country: "india",
     streetAddress: "",
     city: "",
     state: "",
@@ -22,7 +22,7 @@ function App() {
   function changeHandler(event) {
     let { name, type, value, checked } = event.target;
     //(1)->agar koi data naya aagaya toh hum previous form ke data ko copy krrahe ha
-    //(2)->and jo element trigger hua uski value ko update krrahe
+    //(2)->and jo element trigger hua uski value ko update krrahe(value override ho rahi ha )
     setFormData((prevState) => {
       return {
         ...prevState,
