@@ -1,122 +1,46 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import "./App.css";
+import About from "./components/About";
+import Home from "./components/Home";
+import { Route, Routes } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="w-[100vw] h-[100vh] overflow-x-hidden overflow-y-auto">
+      <div className="bg-violet-300 flex justify-center item-center ">
+        <div className="w-[80%] flex justify-between item-center">
+          <div className="text-[20px] p-[20px] font-semibold cursor-pointer hover:text-[#fafafa]">
+            <NavLink to="/">Home</NavLink>
+          </div>
+          <div className="text-[20px]  p-[20px] font-semibold cursor-pointer hover:text-[#fafafa]">
+            <NavLink to="/about">About</NavLink>
+          </div>
+          <div className="text-[20px] p-[20px] font-semibold cursor-pointer hover:text-[#fafafa] ">
+            <NavLink to="/product">Product</NavLink>
+          </div>
+          <div className="text-[20px] p-[20px] font-semibold cursor-pointer hover:text-[#fafafa] ">
+            <NavLink to="/contact">Contact</NavLink>
+          </div>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      </div>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <Routes>
+        <Route path="/" element={<Home></Home>}>
+          <Route
+            index
+            element={<HomeDefaultContent></HomeDefaultContent>}
+          ></Route>
+          <Route path="/about" element={<About></About>}></Route>
+          <Route path="/product" element={<Product></Product>}></Route>
+          <Route path="/contact" element={<Contact></Contact>}></Route>
+        </Route>
+      </Routes>
+    </div>
+  );
 }
+import { Form } from "react-router-dom";
+import Product from "./components/Product";
+import Contact from "./components/Contact";
+import HomeDefaultContent from "./components/HomeDefaultContent";
 
-export default App
+export default App;
